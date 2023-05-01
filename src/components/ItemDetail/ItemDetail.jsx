@@ -3,8 +3,9 @@ import { Context } from "../../context/context"
 import ItemCount from "../ItemCount/ItemCount"
 import { ThreeDots  } from  'react-loader-spinner'
 import ItemInfo from "./ItemInfo"
+import Loader from "../Loader/Loader"
 
-const ItemDetail = ({ product, descripcion, detalle }) => {
+const ItemDetail = ({ product, descripcion, detalle}) => {
     const { onAdd } = useContext(Context)
 
     const [ added, setAdded ] = useState(0)
@@ -20,23 +21,9 @@ const ItemDetail = ({ product, descripcion, detalle }) => {
   
     return (
         <div className="mb-4">
-            {
-                product.length === 0 ? 
-                    <div className="position-absolute top-50 start-50 translate-middle">
-                        <ThreeDots 
-                            height="150" 
-                            width="150" 
-                            radius="9"
-                            color="#C70039" 
-                            ariaLabel="three-dots-loading"
-                            wrapperStyle={{}}
-                            wrapperClassName=""
-                            visible={true}
-                        /> 
-                    </div> 
-                : <>
-                    <div className="card" key={ product.id }>
-
+            { product.length === 0 
+                ? <Loader />
+                : <div className="card" key={ product.id }>
                         <div className="row g-0">
 
                             <div className={`${ detalle ? "col-md-6" : "col-md-4" } `}>
@@ -81,8 +68,8 @@ const ItemDetail = ({ product, descripcion, detalle }) => {
                         {
                             detalle ? <ItemInfo product={ product } /> : ""
                         }
-                    </div>
-                </>
+                
+                </div>
             }
         </div>
     )          
