@@ -32,9 +32,11 @@ const ItemList = ({ products, setProducts }) => {
             { 
                 !products.length > 0
                     ? <div className="text-center m-5 flex"> <Loader /> </div>
-                    : <> 
-                        <Filter prices={prices} valueFilter={valueFilter} />
-
+                    : <div className="row">
+                        <div className="col-3 text-center mt-3">
+                            <Filter prices={prices} valueFilter={valueFilter} />
+                        </div>
+                        <div className="col-9">
                         {filter 
                             ? <>
                                 { productsFiltered.length === 0 
@@ -43,14 +45,13 @@ const ItemList = ({ products, setProducts }) => {
                                     </div>
                                     : productsFiltered.map((product, index) => {
                                         return (
-                                            <div className="col-3 " key={ product.id } > 
-                                        
+                                            <div className="col-3" key={ product.id } > 
                                                 <NavLink to={`/item/${ product.id }`}>
                                                     <ItemDetailMini product={product}/> 
                                                 </NavLink>
                                             </div>
-                                            ) 
-                                        })
+                                        ) 
+                                    })
                                 }
                               </>
                             : <>
@@ -66,7 +67,8 @@ const ItemList = ({ products, setProducts }) => {
                                 }
                                 </>
                         }
-                    </>
+                        </div>
+                    </div>
             }
         </div>    
     )

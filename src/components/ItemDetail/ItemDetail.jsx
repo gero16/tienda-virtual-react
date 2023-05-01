@@ -37,8 +37,7 @@ const ItemDetail = ({ product, descripcion, detalle}) => {
                                     <h5 className="card-text "> <small className=" text-danger"> USD { product.precio } </small> </h5>
                                     <p className="card-text fs-5"> <small className="text-muted"> Cantidad: { product.quantity } </small> </p>
                                     
-                                    {
-                                        detalle 
+                                    { detalle 
                                         ? <div className="datos-adicionales">
                                                 <ul className="mt-2">
                                                     <li className="fs-6">
@@ -60,7 +59,7 @@ const ItemDetail = ({ product, descripcion, detalle}) => {
                                             </div>
                                             
                                             : " "
-                                        }
+                                    }
                                 </div>
                             </div>
 
