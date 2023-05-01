@@ -35,7 +35,9 @@ export const CustomProvider = ({ children }) => {
         }
     }
     
-
+    const Categories = () => {
+        
+    }
  
     return (
         <Context.Provider value ={{ productsAdded, onAdd }}> 

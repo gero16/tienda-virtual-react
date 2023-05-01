@@ -3,9 +3,9 @@ import { useState, CSSProperties, useEffect } from "react";
 //import Loader from "../Loader/loader";
 
 import Filter from "../Filter/Filter";
-import ItemDetail from "../ItemDetail/ItemDetail";
 import ItemDetailMini from "../ItemDetail/ItemDetailMini";
 import Loader from "../Loader/Loader"
+import CategoriesFilter from "../Filter/CategoriesFilter";
 
 const ItemList = ({ products, setProducts }) => {
     const [prices, setPrices] = useState(0)
@@ -33,40 +33,45 @@ const ItemList = ({ products, setProducts }) => {
                 !products.length > 0
                     ? <div className="text-center m-5 flex"> <Loader /> </div>
                     : <div className="row">
+
                         <div className="col-3 text-center mt-3">
-                            <Filter prices={prices} valueFilter={valueFilter} />
+                            <Filter prices={ prices } valueFilter={ valueFilter } />
+                            <CategoriesFilter products={ products }> </CategoriesFilter>
                         </div>
+
                         <div className="col-9">
-                        {filter 
-                            ? <>
-                                { productsFiltered.length === 0 
-                                    ? <div className="text-center">
-                                        <h3> No hay Productos!</h3>
-                                    </div>
-                                    : productsFiltered.map((product, index) => {
-                                        return (
-                                            <div className="col-3" key={ product.id } > 
-                                                <NavLink to={`/item/${ product.id }`}>
-                                                    <ItemDetailMini product={product}/> 
-                                                </NavLink>
+                            <div className="row">
+                                {filter 
+                                    ? <>
+                                        { productsFiltered.length === 0 
+                                            ? <div className="text-center">
+                                                <h3> No hay Productos!</h3>
                                             </div>
-                                        ) 
-                                    })
+                                            : productsFiltered.map((product, key) => {
+                                                return (
+                                                    <div className="col-6 col-sm-4 col-md-3" key={ product.id } > 
+                                                        <NavLink to={`/item/${ product.id }`}>
+                                                            <ItemDetailMini product={product}/> 
+                                                        </NavLink>
+                                                    </div>
+                                                ) 
+                                            })
+                                        }
+                                    </>
+                                    : <>
+                                        { products.map((product, index) => {
+                                            return (   
+                                                <div className="col-6 col-sm-4 col-lg-3" key={ product.id } > 
+                                                    <NavLink to={`/item/${ product.id }`}>
+                                                        <ItemDetailMini product={product}/> 
+                                                    </NavLink>
+                                                </div>
+                                                ) 
+                                            })
+                                        }
+                                        </>
                                 }
-                              </>
-                            : <>
-                                { products.map((product, index) => {
-                                    return (   
-                                        <div className="col-3 " key={ product.id } > 
-                                            <NavLink to={`/item/${ product.id }`}>
-                                                <ItemDetailMini product={product}/> 
-                                            </NavLink>
-                                        </div>
-                                        ) 
-                                    })
-                                }
-                                </>
-                        }
+                            </div>
                         </div>
                     </div>
             }
