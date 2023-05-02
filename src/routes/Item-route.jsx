@@ -1,6 +1,4 @@
 
-
-import NavBar from '../components/NavBar/NavBar'
 import ItemDetailContainer from '../components/ItemDetailContainer/ItemDetailContainer';
 import { NavLink, useParams } from 'react-router-dom';
 

@@ -34,10 +34,7 @@ export const CustomProvider = ({ children }) => {
             //localStorage.setItem('product', JSON.stringify(product))
         }
     }
-    
-    const Categories = () => {
-        
-    }
+ 
  
     return (
         <Context.Provider value ={{ productsAdded, onAdd }}> 

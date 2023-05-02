@@ -12,6 +12,9 @@ import ErrorPage from './routes/Error-page-route';
 import Layout from './components/Layout/Layout';
 import { CustomProvider } from './context/context';
 import CartPage from './components/Cart/CartPage';
+import Admin from './routes/admin';
+import Login from './routes/Users';
+import Users from './routes/Users';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBr5dN3KNlQONtu_BDA_QFQwcmFQBMjNj0",
@@ -49,6 +52,22 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout /> 
+      },
+      {
+        path: "/auth",
+        element: <Users /> 
+      },
+      {
+        path: "/sign-in",
+        element: <Users /> 
+      },
+      {
+        path: "/sign-up",
+        element: <Users /> 
+      },
+      {
+        path: "/admin",
+        element: <Admin /> 
       },
     ],
   },

@@ -25,17 +25,27 @@ const NavBar = ({ isCategory, setIsCategory }) => {
                 </li>
                 <li className="p-2">
                     <NavLink to="/categories/notebooks">
-                      Notebooks
+                        Notebooks
                     </NavLink>
                 </li>
                 <li className="p-2">
                     <NavLink to="/categories/PC">
-                    PCs
+                        PCs
                     </NavLink>
                 </li>
                  <li className="p-2">
                     <NavLink to="/categories/tablets">
-                     Tablets
+                        Tablets
+                    </NavLink>
+                </li>
+                <li className="p-2">
+                    <NavLink to="/auth">
+                        Iniciar Sesión
+                    </NavLink>
+                </li>
+                <li className="p-2">
+                    <NavLink to="/admin">
+                        Admin
                     </NavLink>
                 </li>
                 <li>

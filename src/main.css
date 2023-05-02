@@ -108,3 +108,12 @@ h1, h2, h3, h4, p, ul, option {
   }
 }
   
+.cascading-right {
+  margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
