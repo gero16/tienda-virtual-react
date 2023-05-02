@@ -117,3 +117,13 @@ h1, h2, h3, h4, p, ul, option {
     margin-right: 0;
   }
 }
+
+.add-product-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.new-product-image {
+  width:  100%
+}
