@@ -5,6 +5,8 @@ export const Context = createContext()
 export const CustomProvider = ({ children }) => {
 
     const [productsAdded, setProductsAdded] = useState([])
+
+    const [session, setSession] = useState(false)
   
     const isInCart = (product) => {        
         return productsAdded.some((productAdded) => productAdded.id === product.id )
@@ -48,9 +50,21 @@ export const CustomProvider = ({ children }) => {
         }
     }
  
+    const getSession = () => {
+        const sesionStorage = JSON.parse(localStorage.getItem('session'));
+        if(sesionStorage) {
+
+            setSession(true)
+        }
+
+        if(!sesionStorage) {
+  
+            setSession(false)
+        }
+    }
  
     return (
-        <Context.Provider value ={{ productsAdded, onAdd, getCart }}> 
+        <Context.Provider value ={{ productsAdded, onAdd, getCart, session, getSession }}> 
             { children } 
         </Context.Provider>
     )

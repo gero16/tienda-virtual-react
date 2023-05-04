@@ -1,7 +1,9 @@
+import { useContext, useEffect } from "react";
 import CartWidget from "../CartWidget/CartWidget"
 import logo from "../../assets/logito.jpg"
 import { NavLink } from "react-router-dom"
 import { useState } from "react";
+import { Context } from "../../context/context";
 
 
 const NavBar = ({ isCategory, setIsCategory }) => {
@@ -10,6 +12,12 @@ const NavBar = ({ isCategory, setIsCategory }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const { getSession, session } = useContext(Context)
+
+    useEffect(() => {
+        getSession()
+    }, [])
+  
     return (
         <nav className="d-flex justify-content-between align-items-center">
             
@@ -38,16 +46,10 @@ const NavBar = ({ isCategory, setIsCategory }) => {
                         Tablets
                     </NavLink>
                 </li>
-                <li className="p-2">
-                    <NavLink to="/auth">
-                        Iniciar Sesión
-                    </NavLink>
-                </li>
-                <li className="p-2">
-                    <NavLink to="/admin">
-                        Admin
-                    </NavLink>
-                </li>
+                { session 
+                    ? <li className="p-2"> <NavLink to="/admin"> Admin </NavLink> </li> 
+                    : <li className="p-2"> <NavLink to="/auth" > Iniciar Sesión </NavLink> </li> 
+                }
                 <li>
                     <CartWidget show={ show } handleClose={ handleClose } handleShow={ handleShow }/>
                 </li>
@@ -56,5 +58,5 @@ const NavBar = ({ isCategory, setIsCategory }) => {
         </nav>
     )
 }
-
+//  session ?  <li className="p-2"> <NavLink to="/admin" /> Admin </li> : <li className="p-2"> <NavLink to="/auth" /> Iniciar Sesión </li>
 export default NavBar

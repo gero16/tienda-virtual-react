@@ -1,7 +1,6 @@
 
-import NavBar from '../components/NavBar/NavBar'
 import ItemListContainer from '../components/ItemListContainer/ItemListContainer';
-import Cart from '../components/Cart/Cart';
+
 
 const App = ()=> {
 
