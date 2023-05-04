@@ -58,13 +58,17 @@ export const CustomProvider = ({ children }) => {
         }
 
         if(!sesionStorage) {
-  
             setSession(false)
         }
     }
  
+    const postSession = (user) => {
+        console.log(user)
+        localStorage.setItem('session', JSON.stringify(user))
+        setSession(true)
+    }
     return (
-        <Context.Provider value ={{ productsAdded, onAdd, getCart, session, getSession }}> 
+        <Context.Provider value ={{ productsAdded, onAdd, getCart, session, getSession, postSession }}> 
             { children } 
         </Context.Provider>
     )
