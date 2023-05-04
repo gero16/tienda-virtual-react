@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react"
-import Products from "../../mocks/products"
 import {  doc, getDoc, getFirestore } from "firebase/firestore"
 import { useParams } from "react-router-dom"
-import ItemCount from "../ItemCount/ItemCount"
 import ItemDetail from "../ItemDetail/ItemDetail"
+import { useContext } from "react"
+import { Context } from "../../context/context"
 
 const ItemDetailContainer = ({ productID }) => {
-    
+    const { getCart } = useContext(Context)
     const [product, setProduct] = useState([])
-    
     let { id } = useParams();
 
     useEffect(() => {
+        getCart()
+
         const db = getFirestore()
         const itemRef = doc(db, "items", `${ id }`)
      
@@ -24,19 +25,6 @@ const ItemDetailContainer = ({ productID }) => {
         }).catch((error) => console.log({error}))
       }, [])
     
-
-
-   const imgStyle = {
-    backgroundImage: `url('${ product.img }')`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize:"cover",
-    width: "450px",
-    height: "450px",
-    margin: "0 auto"
-  };
-
-
-
   return (
     <div className="container "> 
         

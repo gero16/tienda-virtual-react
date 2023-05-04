@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect, useContext, useState } from "react"
 import { useParams } from "react-router-dom"
-
+import { Context } from "../../context/context"
 import ItemList from "../ItemList/ItemList"
 import {  collection, getFirestore, getDocs, query, where } from "firebase/firestore"
 import Cart from "../Cart/Cart"
@@ -8,9 +8,14 @@ import Cart from "../Cart/Cart"
 
 
 const ItemListContainer = ({ greeting }) => {
+    const { getCart } = useContext(Context)
 
     const [products, setProducts] = useState([])
-      const { category } = useParams()
+    const { category } = useParams()
+
+    useEffect(() => {
+        getCart()
+    }, [])
 
     useEffect(() => {
         const db = getFirestore()
@@ -22,7 +27,6 @@ const ItemListContainer = ({ greeting }) => {
             getDocs(queryResult)
                 .then((snapshot) => {
                     const docs = snapshot.docs
-                    console.log(docs)
                     setProducts(docs.map((doc) =>({ id: doc.id, ...doc.data() })) )
                 })
                 .catch((error) => console.log({ error }))

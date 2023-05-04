@@ -16,8 +16,6 @@ const ItemDetail = ({ product, descripcion, detalle}) => {
         //product.quantity = count
         //const item = localStorage.setItem('product', JSON.stringify(product));
     }
-
-    console.log(product)
   
     return (
         <div className="mb-4">
