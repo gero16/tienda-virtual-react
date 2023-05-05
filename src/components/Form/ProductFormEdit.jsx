@@ -1,17 +1,31 @@
-import { collection, getFirestore, addDoc } from "firebase/firestore"
-import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { collection, getFirestore, addDoc, doc, getDoc } from "firebase/firestore"
+import { useContext, useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { Context } from "../../context/context"
 
-const ProductForm = ({productSelected}) => {
-    const [edit, setEdit] = useState(false)
-    let location = useLocation();
+const ProductFormEdit = ({}) => {
+    const { getCart } = useContext(Context)
+    
+    const [editProduct, setEditProduct] = useState([])
+
+    let { id } = useParams();
 
     useEffect(() => {
-        // No me queda claro porque tengo que usar un useEffect
-        if(location.pathname == "/items/edit") {
-            setEdit(true)
-        }
-    }, [])
+        getCart()
+
+        const db = getFirestore()
+        const itemRef = doc(db, "items", `${ id }`)
+     
+        getDoc(itemRef)
+          .then((snapshot) => {
+            if(snapshot.exists()) {
+             // console.log(snapshot.data())
+              setEditProduct({ id: snapshot.id, ...snapshot.data() })
+            }
+        }).catch((error) => console.log({error}))
+      }, [])
+
+    console.log(id)
 
     const [product, setProduct] = useState({
         nombre:[],
@@ -47,7 +61,7 @@ const ProductForm = ({productSelected}) => {
            <div className="row mb-2">
                <div className="col">
                    <div className="form-outline">
-                       <input type="text" className="form-control" name="nombre" onChange={(e) => setProduct({...product, nombre:e.target.value})} />
+                       <input type="text" className="form-control" name="nombre" value={editProduct.nombre} onChange={(e) => setProduct({...product, nombre:e.target.value})} />
                        <label className="form-label" htmlFor="form3Example1"> Nombre </label>
                    </div>
                </div>
@@ -169,4 +183,4 @@ const ProductForm = ({productSelected}) => {
 }
 
 
-export default ProductForm
+export default ProductFormEdit

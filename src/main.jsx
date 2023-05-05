@@ -12,9 +12,11 @@ import ErrorPage from './routes/Error-page-route';
 import Layout from './components/Layout/Layout';
 import { CustomProvider } from './context/context';
 import CartPage from './components/Cart/CartPage';
-import Admin from './routes/admin';
-import Login from './routes/Users';
+import Admin from './routes/Admin';
 import Users from './routes/Users';
+import ProductForm from './components/Form/ProductForm';
+import ProductFormEdit from './components/Form/ProductFormEdit';
+import ItemListEdit from './components/ItemList/ItemListEdit';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBr5dN3KNlQONtu_BDA_QFQwcmFQBMjNj0",
@@ -63,8 +65,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <Admin /> 
+        element: <Admin />,
       },
+      {
+        path: "/items/add",
+        element:  <ProductForm />
+      },
+      {
+        path: "/items/edit",
+        element:  <ItemListEdit edit={"true"}/>
+      },
+      {
+        path: "/item/:id/edit",
+        element:  <ProductFormEdit/>
+      },
+      {
+        path: "/items/delete",
+        element:  <ProductForm />
+      }
     ],
   },
 ]);

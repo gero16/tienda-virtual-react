@@ -1,5 +1,6 @@
 const ItemDetailMini = ({ product }) => {  
     return (
+        
         <div className="card mt-4 p-1 text-center shadow bg-body rounded" >
             <img className="card-img-top" src={product.img} alt="Card image cap" />
             <div className="card-body">

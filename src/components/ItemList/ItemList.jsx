@@ -11,19 +11,22 @@ const ItemList = ({ products, setProducts }) => {
     const [prices, setPrices] = useState(0)
     const [filter, setFilter] = useState(false)
     const [productsFiltered, setProductsFiltered] = useState([])
-
+  
     const valueFilter = (event) => {
         setPrices(event.target.value)
+
        let newProducts = products.filter(product => product.precio < event.target.value)
 
         if(event.target.value > 0 ) {
             setProductsFiltered(newProducts)
             setFilter(true)
+            
         }
 
         if(event.target.value == 0 ) {
             setFilter(false)
             setProductsFiltered(products)
+
         }
     }
  
@@ -45,11 +48,12 @@ const ItemList = ({ products, setProducts }) => {
                                     ? <>
                                         { productsFiltered.length === 0 
                                             ? <div className="text-center">
+                                                
                                                 <h3> No hay Productos!</h3>
                                             </div>
                                             : productsFiltered.map((product, key) => {
                                                 return (
-                                                    <div className="col-6 col-sm-4 col-md-3" key={ product.id } > 
+                                                    <div className={`col-6 col-sm-4 col-md-3`} key={ product.id } > 
                                                         <NavLink to={`/item/${ product.id }`}>
                                                             <ItemDetailMini product={product}/> 
                                                         </NavLink>
