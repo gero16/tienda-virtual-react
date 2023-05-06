@@ -96,7 +96,7 @@ const getProduct = (id) => {
     getDoc(itemRef)
       .then((snapshot) => {
         if(snapshot.exists()) {
-         // console.log(snapshot.data())
+            console.log(snapshot.id)
           setProduct({ id: snapshot.id, ...snapshot.data() })
           return product
         }

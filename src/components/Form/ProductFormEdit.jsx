@@ -1,4 +1,4 @@
-import { collection, getFirestore, addDoc, doc, getDoc } from "firebase/firestore"
+import { collection,doc, getFirestore, updateDoc , } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Context } from "../../context/context"
@@ -13,18 +13,18 @@ const ProductFormEdit = ({}) => {
         getProduct(id)
       }, [])
 
-    const sendProduct = (item) => {
-        const db = getFirestore()
-        const collectionRef = collection(db, "items")
-        addDoc(collectionRef, item)
-            .then((response) => console.log({ response }) )
-            .catch((error) => console.log({ error }))
+      const updateProduct = (item) => {
+          const db = getFirestore()
+          const updateDocument = doc(db, "items", id)
+
+          updateDoc(updateDocument, item)
+            .then((result) => {
+                console.log(result)
+            } )
+          .catch((error) => console.log({ error }))
     }
 
-    const editProduct = () => {
-        
-    }
-    
+  
     return (
         <> 
         { <form>
@@ -171,7 +171,7 @@ const ProductFormEdit = ({}) => {
                <label className="form-label" htmlFor="form4Example3"> Descripcion </label>
            </div>
 
-           <button type="button"  className="btn btn-primary btn-block mb-4" onClick={() => sendProduct(product) }> Agregar Producto </button>
+           <button type="button"  className="btn btn-primary btn-block mb-4" onClick={() => updateProduct(product) }> Actualizar Producto </button>
        </form>
     } 
     </>
