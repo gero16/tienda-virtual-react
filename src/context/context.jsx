@@ -1,15 +1,18 @@
 import { useState, createContext } from "react"
-import { collection, getFirestore, getDocs } from "firebase/firestore"
+import { collection, getFirestore, getDocs, getDoc, doc } from "firebase/firestore"
 
 export const Context = createContext()
+
+let productObject = {
+    nombre:[],categoria:[],color:[],marca:[],grafica:[], procesador:[], ram:[], sistema:[], energia:[], estado:[], precio: [], descripcion:[],
+}
 
 export const CustomProvider = ({ children }) => {
 
     const [productsAdded, setProductsAdded] = useState([])
-
     const [session, setSession] = useState(false)
-
     const [products, setProducts] = useState([])
+    const [product, setProduct] = useState(productObject)
 
 
     const isInCart = (product) => {        
@@ -83,12 +86,24 @@ export const CustomProvider = ({ children }) => {
                     setProducts(docs.map((doc) =>({ id: doc.id, ...doc.data() })) )
                     return products
                 })
-                .catch((error) => console.log({ error }))
-        
+                .catch((error) => console.log({ error }))  
     }
    
+const getProduct = (id) => {
+    const db = getFirestore()
+    const itemRef = doc(db, "items", `${ id }`)
+ 
+    getDoc(itemRef)
+      .then((snapshot) => {
+        if(snapshot.exists()) {
+         // console.log(snapshot.data())
+          setProduct({ id: snapshot.id, ...snapshot.data() })
+          return product
+        }
+    }).catch((error) => console.log({error}))
+}
     return (
-        <Context.Provider value={{ productsAdded, onAdd, getCart, session, getSession, postSession, getAllProducts, products }}> 
+        <Context.Provider value={{ productsAdded, onAdd, getCart, session, getSession, postSession, getAllProducts, products, getProduct, product, setProduct }}> 
             { children } 
         </Context.Provider>
     )
