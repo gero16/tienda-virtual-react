@@ -25,6 +25,7 @@ const Login = () => {
               const docs = snapshot.docs
               console.log(docs)
               postSession(user)
+              navigate("/")
 
           })
           .catch((error) => console.log({ error }))

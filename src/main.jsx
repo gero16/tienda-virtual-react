@@ -13,10 +13,11 @@ import Layout from './components/Layout/Layout';
 import { CustomProvider } from './context/context';
 import CartPage from './components/Cart/CartPage';
 import Admin from './routes/Admin';
-import Users from './routes/Users';
+
 import ProductForm from './components/Form/ProductForm';
 import ProductFormEdit from './components/Form/ProductFormEdit';
 import ItemListEdit from './components/ItemList/ItemListEdit';
+import Auth from './routes/Auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBr5dN3KNlQONtu_BDA_QFQwcmFQBMjNj0",
@@ -57,11 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/auth",
-        element: <Users /> 
+        element: <Auth /> 
       },
       {
         path: "/sign-up",
-        element: <Users /> 
+        element: <Auth /> 
       },
       {
         path: "/admin",

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import SignUp from "../components/User/SignUp";
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 
-const Users = ()=> {
+const Auth = ()=> {
   let location = useLocation();
   // console.log(location.pathname) 
 
@@ -20,4 +20,4 @@ const Users = ()=> {
 }
 
 
-export default Users
+export default Auth
