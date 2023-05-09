@@ -1,9 +1,11 @@
-import { collection,doc, getFirestore, updateDoc , } from "firebase/firestore"
+import { useNavigate } from "react-router-dom";
+import { doc, getFirestore, updateDoc } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 
 const ProductFormEdit = ({}) => {
+    const navigate = useNavigate();
     const { getCart, getProduct, product, setProduct } = useContext(Context)
     
     let { id } = useParams();
@@ -18,10 +20,13 @@ const ProductFormEdit = ({}) => {
           const updateDocument = doc(db, "items", id)
 
           updateDoc(updateDocument, item)
-            .then((result) => {
-                console.log(result)
+            .then(() => {
+                console.log("Registro Actualizado!")
+                navigate("/");
             } )
-          .catch((error) => console.log({ error }))
+          .catch(() => {
+            console.log("Error!")
+        })
     }
 
   

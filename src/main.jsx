@@ -9,15 +9,16 @@ import Root from './routes/Root-route'
 import Item from './routes/Item-route';
 import Checkout from './routes/Checkout-route';
 import ErrorPage from './routes/Error-page-route';
-import Layout from './components/Layout/Layout';
 import { CustomProvider } from './context/context';
 import CartPage from './components/Cart/CartPage';
 import Admin from './routes/Admin';
+import Auth from './routes/Auth';
 
+import Layout from './components/Layout/Layout';
 import ProductForm from './components/Form/ProductForm';
 import ProductFormEdit from './components/Form/ProductFormEdit';
 import ItemListEdit from './components/ItemList/ItemListEdit';
-import Auth from './routes/Auth';
+import Delete from './components/Delete/Delete';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBr5dN3KNlQONtu_BDA_QFQwcmFQBMjNj0",
@@ -82,17 +83,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/items/delete",
-        element:  <ProductForm />
-      }
+        element:  <ItemListEdit />
+      },
+      {
+        path: "/item/:id/delete",
+        element:  <Delete/>
+      },
     ],
   },
+
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <CustomProvider>
-      <RouterProvider router={ router }  />
+      <RouterProvider router={ router }   />
     </CustomProvider>
   </React.StrictMode>,
 )

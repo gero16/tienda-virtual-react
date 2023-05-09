@@ -1,14 +1,15 @@
-import { NavLink } from "react-router-dom"
-
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom"
 import ItemDetailMini from "../ItemDetail/ItemDetailMini";
 import Loader from "../Loader/Loader"
-import { useEffect, useState } from "react";
-import {  collection, getFirestore, getDocs, query, where } from "firebase/firestore"
+
 import { useContext } from "react";
 import { Context } from "../../context/context";
+
 const ItemListEdit = () => {
-  
     const { getAllProducts, products } = useContext(Context)
+    let location = useLocation();
+    let locationEdit = "/items/edit"
 
     useEffect(() => {
         getAllProducts()
@@ -22,11 +23,11 @@ const ItemListEdit = () => {
                     : 
                         <div className="row">
                                 <>
-                                    <h3> Editar </h3>
+                                    <h3> {location.pathname === locationEdit ? `Elija una Publicacion para Editar`: "Elija una Publicacion para Eliminar"} </h3>
                                     { products.map((product, index) => {
                                         return (   
                                             <div className="col-4 col-sm-4 col-lg-3" key={ product.id } > 
-                                                <NavLink to={`/item/${ product.id }/edit`}>
+                                                <NavLink to={ location.pathname === locationEdit ? `/item/${ product.id }/edit`:`/item/${ product.id }/delete` }>
                                                     <ItemDetailMini product={product}/> 
                                                 </NavLink>
                                             </div>
