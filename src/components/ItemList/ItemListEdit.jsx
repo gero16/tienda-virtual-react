@@ -43,8 +43,8 @@ const ItemListEdit = () => {
                                       
                                         : <>
                                         <h3>
-                                            Elija una Publicacion para Eliminar 
-                                            <img src={DeleteIcon} alt="" />  
+                                            Elija una Publicacion para Borrar 
+                                            <img src={DeleteIcon} alt=""  style={{width : "64", height:"48px"}} />  
                                         </h3>
                                       
                                             <NavLink to="/admin">

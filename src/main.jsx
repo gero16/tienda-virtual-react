@@ -15,10 +15,9 @@ import Admin from './routes/Admin';
 import Auth from './routes/Auth';
 
 import Layout from './components/Layout/Layout';
-import ProductForm from './components/Form/ProductForm';
-import ProductFormEdit from './components/Form/ProductFormEdit';
 import ItemListEdit from './components/ItemList/ItemListEdit';
 import Delete from './components/Delete/Delete';
+import ProductFormContainer from './components/FormContainer/ProductFormContainer';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBr5dN3KNlQONtu_BDA_QFQwcmFQBMjNj0",
@@ -74,15 +73,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/items/add",
-    element:  <ProductForm />
+    element:  <ProductFormContainer productSelected={false} />
   },
   {
     path: "/items/edit",
-    element:  <ItemListEdit edit={"true"}/>
+    element:  <ItemListEdit />
   },
   {
     path: "/item/:id/edit",
-    element:  <ProductFormEdit/>
+    element:  <ProductFormContainer productSelected={true}/>
   },
   {
     path: "/items/delete",
