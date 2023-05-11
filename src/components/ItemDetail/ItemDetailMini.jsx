@@ -1,3 +1,6 @@
+
+import DeleteIcon from "../../assets/delete.png"
+import EditIcon from "../../assets/edit.png"
 const ItemDetailMini = ({ product }) => {  
     return (
         
