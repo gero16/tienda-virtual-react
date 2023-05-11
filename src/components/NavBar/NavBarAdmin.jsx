@@ -24,38 +24,46 @@ const NavBar = ({ isCategory, setIsCategory }) => {
     return (
         <div className="row justify-content-center text-center">
             <div className="col-auto m-3">
-                <ul className="d-flex flex-row fs-5 lista-admin-menu">
+                <ul className="d-flex flex-row fs-5">
                     <li className="p-2 flex-column" >
                         <NavLink to="/">
-                            <span className="h4">  Volver al Inicio </span>     
+                            <div className="card"style= {{width: "18rem"}} >
+                                <img className="card-img-top" src={Principal} alt="Card image cap"/>
+                                <div className="card-body">
+                                    <h5 className="card-title"> Borrar Productos</h5>
+                                </div>
+                            </div>
                         </NavLink>
-                        <picture>
-                            <img src={Principal} alt="" className="img-menu-admin"/>
-                        </picture>
                     </li>
                     <li className="p-2 flex-column">
-                        <NavLink to="/items/add/" >
-                            <span className="h4"> Crear Producto </span>     
+                        <NavLink to="/items/add">
+                            <div className="card" style={{width: "18rem"}}>
+                                <img className="card-img-top" src={Crear} alt="Card image cap"/>
+                                <div className="card-body">
+                                    <h5 className="card-title"> Agregar Productos</h5>
+                                </div>
+                            </div>
                         </NavLink>
-                            <picture>
-                                <img src={Crear} alt="" className="img-menu-admin"/>
-                            </picture>
                     </li>
                     <li className="p-2 flex-column">
                         <NavLink to="/items/delete">
-                        <span className="h4">  Borrar Productos </span>     
+                            <div className="card" style={{width: "18rem"}}>
+                                <img className="card-img-top" src={Eliminar} alt="Card image cap"/>
+                                <div className="card-body">
+                                    <h5 className="card-title"> Borrar Productos</h5>
+                                </div>
+                            </div>
                         </NavLink>
-                            <picture>
-                                <img src={Eliminar} alt="" className="img-menu-admin"/>
-                            </picture>
                     </li>
                     <li className="p-2 flex-column">
                         <NavLink to="/items/edit">
-                            <span className="h4">  Editar Productos </span>     
+                            <div className="card" style={{width: "18rem"}}>
+                                <img className="card-img-top" src={Modificar} alt="Card image cap"/>
+                                <div className="card-body">
+                                    <h5 className="card-title"> Editar Productos</h5>
+                                </div>
+                            </div>
                         </NavLink>
-                            <picture>
-                                <img src={Modificar} alt="" className="img-menu-admin"/>
-                            </picture>
                     </li>
                 </ul>
             </div>

@@ -65,33 +65,33 @@ const router = createBrowserRouter([
         path: "/sign-up",
         element: <Auth /> 
       },
-      {
-        path: "/admin",
-        element: <Admin />,
-      },
-      {
-        path: "/items/add",
-        element:  <ProductForm />
-      },
-      {
-        path: "/items/edit",
-        element:  <ItemListEdit edit={"true"}/>
-      },
-      {
-        path: "/item/:id/edit",
-        element:  <ProductFormEdit/>
-      },
-      {
-        path: "/items/delete",
-        element:  <ItemListEdit />
-      },
-      {
-        path: "/item/:id/delete",
-        element:  <Delete/>
-      },
+      
     ],
   },
-
+  {
+    path: "/admin",
+    element: <Admin />,
+  },
+  {
+    path: "/items/add",
+    element:  <ProductForm />
+  },
+  {
+    path: "/items/edit",
+    element:  <ItemListEdit edit={"true"}/>
+  },
+  {
+    path: "/item/:id/edit",
+    element:  <ProductFormEdit/>
+  },
+  {
+    path: "/items/delete",
+    element:  <ItemListEdit />
+  },
+  {
+    path: "/item/:id/delete",
+    element:  <Delete/>
+  },
 ]);
 
 
