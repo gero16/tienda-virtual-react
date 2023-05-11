@@ -5,6 +5,9 @@ import Loader from "../Loader/Loader"
 
 import { useContext } from "react";
 import { Context } from "../../context/context";
+import DeleteIcon from "../../assets/delete.png"
+import EditIcon from "../../assets/edit.png"
+import BackIcon from "../../assets/flecha.png"
 
 const ItemListEdit = () => {
     const { getAllProducts, products } = useContext(Context)
@@ -16,14 +19,43 @@ const ItemListEdit = () => {
         
     }, [])
     return (
-        <div className="row mb-5 ">
+        <>
             { 
                 !products.length > 0
                     ? <div className="text-center m-5 flex"> <Loader /> </div>
                     : 
-                        <div className="row">
+                        <div className="row m-3 ">
                                 <>
-                                    <h3> {location.pathname === locationEdit ? `Elija una Publicacion para Editar`: "Elija una Publicacion para Eliminar"} </h3>
+                                    <div className="d-flex justify-content-between align-items-center"> 
+                                        {location.pathname === locationEdit 
+                                        ? <>
+                                            <h3>
+                                                Elija una Publicacion para Editar 
+                                                <img src={EditIcon} alt="" />  
+                                            </h3>
+                                          
+                                                <NavLink to="/admin">
+                                                    <img src={BackIcon} alt=""  style={{width : "1vw", transform: "rotate(-180deg)"}} />  
+                                                    <span style={{height: "64px"}}> Volver al Menu </span>
+                                                    
+                                                </NavLink>
+                                            </>
+                                      
+                                        : <>
+                                        <h3>
+                                            Elija una Publicacion para Eliminar 
+                                            <img src={DeleteIcon} alt="" />  
+                                        </h3>
+                                      
+                                            <NavLink to="/admin">
+                                                <img src={BackIcon} alt=""  style={{width : "1vw", transform: "rotate(-180deg)"}} />  
+                                                <span style={{height: "64px"}}> Volver al Menu </span>
+                                                
+                                            </NavLink>
+                                        </>
+                                        } 
+                                        
+                                    </div>
                                     { products.map((product, index) => {
                                         return (   
                                             <div className="col-4 col-sm-4 col-lg-3" key={ product.id } > 
@@ -38,7 +70,7 @@ const ItemListEdit = () => {
                             
                         </div>
             }
-        </div>    
+        </>
     )
 }
 

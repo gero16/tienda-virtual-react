@@ -32,7 +32,8 @@ const ProductFormEdit = ({}) => {
   
     return (
         <> 
-        { <form>
+        { <form className="m-5">
+            <h2 className="mb-2"> Editar {product.nombre}</h2>
            <div className="row mb-2">
                <div className="col">
                    <div className="form-outline">

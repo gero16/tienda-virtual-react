@@ -30,7 +30,7 @@ const NavBar = ({ isCategory, setIsCategory }) => {
                             <div className="card"style= {{width: "18rem"}} >
                                 <img className="card-img-top" src={Principal} alt="Card image cap"/>
                                 <div className="card-body">
-                                    <h5 className="card-title"> Borrar Productos</h5>
+                                    <h5 className="card-title"> Página Principal </h5>
                                 </div>
                             </div>
                         </NavLink>
