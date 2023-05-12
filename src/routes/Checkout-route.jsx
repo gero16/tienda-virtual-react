@@ -34,46 +34,36 @@ const Checkout = ( { products } ) => {
     }
 
     return (
-        <>
             <div className="container">
-
                 <div className="row p-5">
+
                     <div className="col-6">
                         <ClientForm sendOrder={ sendOrder } /> 
                     </div>
                     
                     <div className="col-6">
-                            <h2 className="ms-3 text-secondary"> Resumen del Pedido  </h2>
-                            <div className="card text-dark bg-light m-4 p-3 ">
-                                {
-                                    productsAdded.length >= 1 ? 
-                                        productsAdded.map((product, index) => {
-                                            return (
-                                            <>
-                                                <ItemDetail product={ product } /> 
-                                            </>
-                                            )
-                                        })
+                        <h2 className="ms-3 text-secondary"> Resumen del Pedido  </h2>
+                        <div className="card text-dark bg-light m-4 p-3 ">
+                            { productsAdded.length >= 1 
+                                ? productsAdded.map((product, index) => {
+                                    return (
+                                        <> <ItemDetail product={ product } /> </>
+                                    )
+                                })
                                         
-                                     : <div className="text-center"> No hay Productos en su Carrito </div>
-                                }
-                                  <div className="p-2">
-                                        <p> Envio: Gratis </p>
-                                        <h4> Total 
-                                            <strong> USD 
-                                                { productsAdded.reduce(
-                                                    (acc, product) => acc + product.quantity * product.precio,
-                                                    0)
-                                                } 
-                                            </strong>
-                                        </h4>
-                                    </div>
+                                : <div className="text-center"> No hay Productos en su Carrito </div>
+                            }
+                            <div className="p-2">
+                                <p> Envio: Gratis </p>
+                                <h4> Total 
+                                    <strong> USD { productsAdded.reduce( (acc, product) => acc + product.quantity * product.precio, 0) } </strong>
+                                </h4>
                             </div>
+                        </div>
                     </div>
+                    
                 </div>
-   
             </div>
-        </>
     )
 }
 

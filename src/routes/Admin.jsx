@@ -1,11 +1,9 @@
 
-import { NavLink, useParams } from 'react-router-dom';
 import NavBarAdmin from '../components/NavBar/NavBarAdmin';
 import imagen from "../assets/fondo-admin2.jpg"
 
 const Admin = ()=> {
 
-  let { id } = useParams();
   const adminHeader = {
     backgroundImage: `url(${imagen})`,
     height: "250px",
@@ -13,8 +11,8 @@ const Admin = ()=> {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center"
-
   }
+
   return (
       <> 
         <div style={adminHeader} className=' row justify-content-center align-items-center'>
@@ -27,11 +25,7 @@ const Admin = ()=> {
           <NavBarAdmin />    
         </div>
       </>
-      
-
-
   )
 }
-
 
 export default Admin

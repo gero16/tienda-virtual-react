@@ -6,6 +6,12 @@ import { Link } from 'react-router-dom';
 const ItemCount = ({ stock, onAdd }) => {
 
     const [count, setCount] = useState(0)
+    console.log(stock)
+    
+    if(count === -1) {
+        setCount(0)
+    }
+
 
     return (
         <div className="item-count-container mt-2">
@@ -14,7 +20,6 @@ const ItemCount = ({ stock, onAdd }) => {
                         <Button 
                             variant="light" 
                             onClick={() => setCount((prevState) => prevState - 1)} 
-                            disabled={count === stock}
                             className='pe-3 ps-3'
                         > -
                         </Button>
@@ -23,6 +28,7 @@ const ItemCount = ({ stock, onAdd }) => {
                         <span className='h5'> { count } </span>
                     </li>
                     <li className="list-group-item p-0">
+                        
                         <Button 
                             variant="light" 
                             onClick={() => setCount((prevState) => prevState + 1)} 
