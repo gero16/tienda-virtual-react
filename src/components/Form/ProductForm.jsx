@@ -4,6 +4,7 @@ import { NavLink, useLocation, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 import BackIcon from "../../assets/flecha.png"
 import AddIcon from "../../assets/boton-agregar.png"
+import InputContainer from "./InputContainer/InputContainer"
 
 const ProductForm = ({productSelected}) => {
     const { product, setProduct, getProduct } = useContext(Context)
@@ -12,6 +13,7 @@ const ProductForm = ({productSelected}) => {
     useEffect(() => {
         if(id) getProduct(id)
       }, [])
+
 
     const sendProduct = (item) => {
         const db = getFirestore()
@@ -35,144 +37,56 @@ const ProductForm = ({productSelected}) => {
             console.log("Error!")
         })
     }
+    const options = ["Celulares", "Notebooks", "PC", "Tablets"]
 
     return (
         <> 
             { productSelected 
         
             ? <form className="m-5">
-                    <div className="d-flex justify-content-between">
+                    <header className="d-flex justify-content-between">
                         <h2 className="mb-2"> Editar {product.nombre}</h2>
                         <NavLink to="/admin">
                             <img src={BackIcon} alt=""  style={{width : "1vw", transform: "rotate(-180deg)"}} />  
                             <span style={{height: "64px"}}> Volver al Menu </span>
                         </NavLink>
-                    </div>
+                    </header>
+
                 <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="nombre" value={product.nombre} onChange={(e) => setProduct({...product, nombre:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Nombre </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <select className="form-select" aria-label="Default select example" name="categoria" onChange={(e) => setProduct({...product, categoria:e.target.value})}>
-                                <option defaultValue={product.categoria }>{ product.categoria }</option>
-                                <option value="celulares"> Celulares </option>
-                                <option value="notebooks"> Notebooks </option>
-                                <option value="pc"> PCs </option>
-                                <option value="tablets"> Tablets </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    name="marca" 
-                                    value={product.marca ? product.marca : " "}  
-                                    onChange={(e) => setProduct({...product, marca:e.target.value})} 
-                                />
-                            <label className="form-label" htmlFor="form3Example1"> Marca </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="color" value={product.color} onChange={(e) => setProduct({...product, color:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example2"> Color </label>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    name="disco"  
-                                    value={product.disco}  
-                                    onChange={(e) => setProduct({...product, disco:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Disco </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                                <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    name="grafica"  
-                                    value={product.grafica ? product.grafica : " "}  
-                                    onChange={(e) => setProduct({...product, grafica:e.target.value})} 
-                                />  
-                            <label className="form-label" htmlFor="form3Example2"> Grafica </label>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="procesador" value={product.procesador} onChange={(e) => setProduct({...product, procesador:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Procesador </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="ram" value={product.ram} onChange={(e) => setProduct({...product, ram:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example2"> Ram </label>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="sistema" value={product.sistema} onChange={(e) => setProduct({...product, sistema:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Sistema </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                                <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    name="energia"  
-                                    value={product.energia}  
-                                    onChange={(e) => setProduct({...product, energia:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example2"> Energia </label>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="estado" value={product.estado} onChange={(e) => setProduct({...product, estado:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Estado </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="number" className="form-control" name="precio" value={product.precio} onChange={(e) => setProduct({...product, precio: parseInt(e.target.value) })} />
-                            <label className="form-label" htmlFor="form3Example2"> Precio </label>
-                        </div>
-                    </div>
+                    <InputContainer type={"text"} name={"nombre"} value={product.nombre} />
+                    <InputContainer type={"select"} name={"categorias"} value={product.categoria}  options={options} />
                 </div>
 
                 <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input className=" form-control" 
-                                    type="text" 
-                                    placeholder="URL"
-                                    name="img"
-                                    value={product.img}
-                                    onChange={(e) => setProduct({...product, img:e.target.value})}
-                            />
-                            <span className="title-stat-forms">Add Image</span>
-                        </div>
-                    </div>
+                    <InputContainer type={"text"} name={"marca"} value={product.marca} />
+                    <InputContainer type={"text"} name={"color"} value={product.color} />
+                </div>
+
+                <div className="row mb-2">
+                    <InputContainer type={"text"} name={"disco"} value={product.disco} />
+                    <InputContainer type={"text"} name={"grafica"} value={product.grafica} />
+            
+                </div>
+                <div className="row mb-2">
+                    <InputContainer type={"text"} name={"procesador"} value={product.procesador} />
+
+                    <InputContainer type={"text"} name={"ram"} value={product.ram} />
+                </div>
+
+                <div className="row mb-2">
+                    <InputContainer type={"text"} name={"sistema"} value={product.sistema} />
+                    <InputContainer type={"text"} name={"energia"} value={product.sistema} />
+                </div>
+                
+                <div className="row mb-2">
+                    <InputContainer type={"text"} name={"estado"} value={product.estado} />
+            
+                    <InputContainer type={"number"} name={"precio"} value={product.precio} />
+                </div>
+
+                <div className="row mb-2">
+                    <InputContainer type={"text"} name={"img"} value={product.img} />
+                  
                     <div className="col">
                         <div className="form-outline">
                         <div className="add-product-image border border-1">
@@ -195,114 +109,55 @@ const ProductForm = ({productSelected}) => {
             </form>
 
             : <form className="m-5">
-                <div className="d-flex justify-content-between">
-                    <span className="d-flex mb-2 col align-items-center gap-1">
+                <header className="d-flex justify-content-between">
+                    <article className="d-flex mb-2 col align-items-center gap-1">
                         <h2> Agregar un nuevo Producto </h2>
                         <img src={AddIcon} alt=""  style={{width : "50px", height: "50px"}} />
-                    </span>
+                    </article>
                     <NavLink to="/admin">
                         <img src={BackIcon} alt=""  style={{width : "1vw", transform: "rotate(-180deg)"}} />  
                         <span style={{height: "64px"}}> Volver al Menu </span>
                     </NavLink>
+                </header>
+
+                <div className="row mb-2">
+                    <InputContainer type={"text"} name={"nombre"}  />
+                    <InputContainer type={"select"} name={"categorias"} val  options={options} />
+                </div>
+
+                <div className="row mb-2">
+                    <InputContainer type={"text"} name={"marca"} />
+                    <InputContainer type={"text"} name={"color"} />
+                </div>
+
+                <div className="row mb-2">
+                    <InputContainer type={"text"} name={"disco"} />
+                    <InputContainer type={"text"} name={"grafica"}  />
+            
                 </div>
                 <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="nombre" onChange={(e) => setProduct({...product, nombre:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Nombre </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <select className="form-select" aria-label="Default select example" name="categoria" onChange={(e) => setProduct({...product, categoria:e.target.value})}>
-                                <option defaultValue={"Categorias"}>Categorias</option>
-                                <option value="celulares"> Celulares </option>
-                                <option value="notebooks"> Notebooks </option>
-                                <option value="pc"> PCs </option>
-                                <option value="tablets"> Tablets </option>
-                            </select>
-                        </div>
-                    </div>
+                    <InputContainer type={"text"} name={"procesador"}  />
+                    <InputContainer type={"text"} name={"ram"} />
                 </div>
+
                 <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="marca"  onChange={(e) => setProduct({...product, marca:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Marca </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="color" onChange={(e) => setProduct({...product, color:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example2"> Color </label>
-                        </div>
-                    </div>
+                    <InputContainer type={"text"} name={"sistema"}  />
+                    <InputContainer type={"text"} name={"energia"}  />
                 </div>
+                
                 <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="disco"  onChange={(e) => setProduct({...product, disco:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Disco </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="grafica" onChange={(e) => setProduct({...product, grafica:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example2"> Grafica </label>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="procesador" onChange={(e) => setProduct({...product, procesador:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Procesador </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="ram" onChange={(e) => setProduct({...product, ram:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example2"> Ram </label>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="sistema" onChange={(e) => setProduct({...product, sistema:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Sistema </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="energia" onChange={(e) => setProduct({...product, energia:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example2"> Energia </label>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mb-2">
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="text" className="form-control" name="estado" onChange={(e) => setProduct({...product, estado:e.target.value})} />
-                            <label className="form-label" htmlFor="form3Example1"> Estado </label>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="form-outline">
-                            <input type="number" className="form-control" name="precio" onChange={(e) => setProduct({...product, precio: parseInt(e.target.value) })} />
-                            <label className="form-label" htmlFor="form3Example2"> Precio </label>
-                        </div>
-                    </div>
+                    <InputContainer type={"text"} name={"estado"}  />
+                    <InputContainer type={"number"} name={"precio"}  />
                 </div>
 
                 <div className="row mb-2">
                     <div className="col">
                         <div className="form-outline">
                             <input className=" form-control" 
-                                    type="text" 
-                                    placeholder="URL"
-                                    name="img"
-                                    onChange={(e) => setProduct({...product, img:e.target.value})}
+                                type="text" 
+                                placeholder="URL"
+                                name="img"
+                                onChange={(e) => setProduct({...product, img:e.target.value})}
                             />
                             <span className="title-stat-forms">Add Image</span>
                         </div>

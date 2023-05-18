@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 
 
 const ItemCount = ({ stock, onAdd }) => {
-
     const [count, setCount] = useState(0)
-    console.log(stock)
     
     if(count === -1) {
         setCount(0)
     }
-
 
     return (
         <div className="item-count-container mt-2">
