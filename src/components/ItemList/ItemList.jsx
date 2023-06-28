@@ -37,12 +37,12 @@ const ItemList = ({ products, setProducts }) => {
                     ? <div className="text-center m-5 flex"> <Loader /> </div>
                     : <div className="row">
 
-                        <div className="col-3 text-center mt-3">
+                        <div className="col-3 col-md-2 text-center mt-3">
                             <Filter prices={ prices } valueFilter={ valueFilter } />
                             <CategoriesFilter products={ products }> </CategoriesFilter>
                         </div>
 
-                        <div className="col-9">
+                        <div className="col-9 col-md-10">
                             <div className="row">
                                 {filter 
                                     ? <>
@@ -53,7 +53,7 @@ const ItemList = ({ products, setProducts }) => {
                                             </div>
                                             : productsFiltered.map((product, key) => {
                                                 return (
-                                                    <div className={`col-6 col-sm-4 col-md-3`} key={ product.id } > 
+                                                    <div className={`col col-md-4 col-xl-3`} key={ product.id } > 
                                                         <NavLink to={`/item/${ product.id }`}>
                                                             <ItemDetailMini product={product}/> 
                                                         </NavLink>
@@ -65,7 +65,7 @@ const ItemList = ({ products, setProducts }) => {
                                     : <>
                                         { products.map((product, index) => {
                                             return (   
-                                                <div className="col-6 col-sm-4 col-lg-3" key={ product.id } > 
+                                                <div className="col col-md-4 col-xl-3" key={ product.id } > 
                                                     <NavLink to={`/item/${ product.id }`}>
                                                         <ItemDetailMini product={product}/> 
                                                     </NavLink>

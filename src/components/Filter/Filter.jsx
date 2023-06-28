@@ -4,7 +4,7 @@ const Filter = ({valueFilter, prices}) => {
     
     return(
         <div>
-            <h3> Filtrar por el Precio </h3>
+            <h4> Filtrar por el Precio </h4>
             <div className="text-center">
                 <input 
                     type="range" 
@@ -13,6 +13,7 @@ const Filter = ({valueFilter, prices}) => {
                     max="1000" 
                     id="customRange3" 
                     value={prices}
+                    step="10"
                     onChange={(e) => valueFilter(e)}
                 />
                 <span> USD { prices }</span>

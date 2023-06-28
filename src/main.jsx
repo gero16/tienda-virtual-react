@@ -19,6 +19,7 @@ import ItemListEdit from './components/ItemList/ItemListEdit';
 import Delete from './components/Delete/Delete';
 import ProductFormContainer from './components/FormContainer/ProductFormContainer';
 
+// Pasar a .env
 const firebaseConfig = {
   apiKey: "AIzaSyBr5dN3KNlQONtu_BDA_QFQwcmFQBMjNj0",
   authDomain: "react-coderhouse-f0283.firebaseapp.com",

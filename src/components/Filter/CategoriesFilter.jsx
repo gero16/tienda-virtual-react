@@ -6,7 +6,7 @@ const CategoriesFilter = ({products, category }) => {
     })
   
     return (
-        <div className="mt-5">
+        <div className="mt-4">
             <ul>
 
                 <li className="mt-3"> 

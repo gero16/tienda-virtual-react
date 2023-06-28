@@ -8,7 +8,7 @@ const App = ()=> {
     <div className="App">
 
       <div className='container'>
-        <ItemListContainer greeting={"¡Bienvenido a Mercadito!"}  />
+        <ItemListContainer greeting={""}  />
       </div>
       
     </div>
