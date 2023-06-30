@@ -57,37 +57,37 @@ export const CustomProvider = ({ children }) => {
         }
     }
  
-    const getSession = () => {
-        const sesionStorage = JSON.parse(localStorage.getItem('session'));
-        if(sesionStorage) {
+const getSession = () => {
+    const sesionStorage = JSON.parse(localStorage.getItem('session'));
+    if(sesionStorage) {
 
-            setSession(true)
-        }
-
-        if(!sesionStorage) {
-            setSession(false)
-        }
-    }
- 
-    const postSession = (user) => {
-        console.log(user)
-        localStorage.setItem('session', JSON.stringify(user))
         setSession(true)
     }
 
-    const getAllProducts = () => {
-        const db = getFirestore()
-        const itemsCollection = collection(db, "items")
-    
-        
-            getDocs(itemsCollection)
-                .then((snapshot) => {
-                    const docs = snapshot.docs
-                    setProducts(docs.map((doc) =>({ id: doc.id, ...doc.data() })) )
-                    return products
-                })
-                .catch((error) => console.log({ error }))  
+    if(!sesionStorage) {
+        setSession(false)
     }
+}
+
+const postSession = (user) => {
+    console.log(user)
+    localStorage.setItem('session', JSON.stringify(user))
+    setSession(true)
+}
+
+const getAllProducts = () => {
+    const db = getFirestore()
+    const itemsCollection = collection(db, "items")
+
+    
+        getDocs(itemsCollection)
+            .then((snapshot) => {
+                const docs = snapshot.docs
+                setProducts(docs.map((doc) =>({ id: doc.id, ...doc.data() })) )
+                return products
+            })
+            .catch((error) => console.log({ error }))  
+}
    
 const getProduct = (id) => {
     const db = getFirestore()
@@ -102,8 +102,11 @@ const getProduct = (id) => {
         }
     }).catch((error) => console.log({error}))
 }
+
     return (
-        <Context.Provider value={{ productsAdded, onAdd, getCart, session, getSession, postSession, getAllProducts, products, getProduct, product, setProduct }}> 
+        <Context.Provider value={{ productsAdded, onAdd, getCart, session, getSession, postSession, 
+                            getAllProducts, products, getProduct, product, setProduct 
+                        }}> 
             { children } 
         </Context.Provider>
     )

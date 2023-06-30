@@ -11,8 +11,8 @@ import Checkout from './routes/Checkout-route';
 import ErrorPage from './routes/Error-page-route';
 import { CustomProvider } from './context/context';
 import CartPage from './components/Cart/CartPage';
-import Admin from './routes/Admin';
-import Auth from './routes/Auth';
+import Admin from './routes/Admin-route';
+import Auth from './routes/Auth-route';
 
 import Layout from './components/Layout/Layout';
 import ItemListEdit from './components/ItemList/ItemListEdit';

@@ -9,13 +9,9 @@ import Principal from "../../assets/principal.jpg"
 import Modificar from "../../assets/modificar.jpg"
 import Crear from "../../assets/crear.jpg"
 
-const NavBar = ({ isCategory, setIsCategory }) => {
-    const [show, setShow] = useState(false);
+const MenuAdmin = ({ isCategory, setIsCategory }) => {
  
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const { getSession, session } = useContext(Context)
+    const { getSession } = useContext(Context)
 
     useEffect(() => {
         getSession()
@@ -71,4 +67,4 @@ const NavBar = ({ isCategory, setIsCategory }) => {
     )
 }
 
-export default NavBar
+export default MenuAdmin

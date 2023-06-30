@@ -1,5 +1,5 @@
 
-import NavBarAdmin from '../components/NavBar/NavBarAdmin';
+import MenuAdmin from '../components/NavBar/MenuAdmin';
 import imagen from "../assets/fondo-admin2.jpg"
 
 const Admin = ()=> {
@@ -22,7 +22,7 @@ const Admin = ()=> {
         </div>
           
         <div className='m-4'>
-          <NavBarAdmin />    
+          <MenuAdmin />    
         </div>
       </>
   )

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Context } from "../../context/context";
 
 
-const NavBar = ({ isCategory, setIsCategory }) => {
+const NavBar = () => {
     const [show, setShow] = useState(false);
  
     const handleClose = () => setShow(false);
@@ -47,7 +47,7 @@ const NavBar = ({ isCategory, setIsCategory }) => {
                     </NavLink>
                 </li>
                 { session 
-                    ? <li className="p-2"> <NavLink to="/admin"> Admin </NavLink> </li> 
+                    ? <li className="p-2"> <NavLink to="/admin"> Administrar </NavLink> </li> 
                     : <li className="p-2"> <NavLink to="/auth" > Iniciar Sesión </NavLink> </li> 
                 }
                 <li>

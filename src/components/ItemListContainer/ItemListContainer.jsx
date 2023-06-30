@@ -1,13 +1,11 @@
 import { useEffect, useContext, useState } from "react"
-import { useLocation, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { Context } from "../../context/context"
 import ItemList from "../ItemList/ItemList"
-import ItemListEdit from "../ItemList/ItemListEdit"
 import {  collection, getFirestore, getDocs, query, where } from "firebase/firestore"
 import Cart from "../Cart/Cart"
 
 const ItemListContainer = ({ greeting }) => {
-
     const { getCart } = useContext(Context)
     const [products, setProducts] = useState([])
     const { category } = useParams()

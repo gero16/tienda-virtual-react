@@ -122,7 +122,7 @@ const ProductForm = ({productSelected}) => {
 
                 <div className="row mb-2">
                     <InputContainer type={"text"} name={"nombre"}  />
-                    <InputContainer type={"select"} name={"categorias"} val  options={options} />
+                    <InputContainer type={"select"} name={"categorias"} options={options} />
                 </div>
 
                 <div className="row mb-2">
