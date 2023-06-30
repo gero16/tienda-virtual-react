@@ -1,12 +1,13 @@
 import { collection, getFirestore, addDoc, doc, updateDoc } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
-import { NavLink, useLocation, useParams } from "react-router-dom"
+import { NavLink, useParams, useNavigate  } from "react-router-dom"
 import { Context } from "../../context/context"
 import BackIcon from "../../assets/flecha.png"
 import AddIcon from "../../assets/boton-agregar.png"
 import InputContainer from "./InputContainer/InputContainer"
 
 const ProductForm = ({productSelected}) => {
+    const navigate = useNavigate();
     const { product, setProduct, getProduct } = useContext(Context)
     let { id } = useParams();
 
@@ -34,12 +35,12 @@ const ProductForm = ({productSelected}) => {
                 console.log("Registro Actualizado!")
                 navigate("/");
             } )
-          .catch(() => {
+          .catch((e) => {
+            console.log(e)
             console.log("Error!")
         })
     }
     const options = ["Celulares", "Notebooks", "PC", "Tablets"]
-    console.log(product.categoria)
 
     return (
         <> 

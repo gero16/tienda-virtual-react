@@ -3,18 +3,28 @@ import { Context } from "../../../context/context"
 
 const InputContainer = ({type, name, value, options }) => {
     const { product, setProduct } = useContext(Context)
-
+    
+    console.log(product.categoria)
     return (
         <> 
         {type === "select" 
             ? <div className="col">
                 <div className="form-outline">
-                    <select className="form-select" aria-label="Default select example" name="categoria" onChange={(e) => setProduct({...product, categoria:e.target.value})}>
-                        <option defaultValue={value}> {name} </option>
+                    <select 
+                        className="form-select" 
+                        aria-label="Default select example" 
+                        name="categoria" 
+                        defaultValue={product.categoria}
+                        onChange={(e) => setProduct({...product, categoria:e.target.value})}
+                        >
+                        <option value={product.categoria} disabled> {product.categoria} </option>
                         {
                             options.map((option, key) => {
                                 return (
-                                    <option value={option.toLowerCase()} key={key}> {option} </option>
+                                    <option 
+                                        value={option.toLowerCase()} 
+                                        key={key}> {option} 
+                                    </option>
                                 )
                             })
                         }
