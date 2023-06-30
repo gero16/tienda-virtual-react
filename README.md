@@ -24,8 +24,6 @@ $ npm run dev
 
 6. La ruta "/*" - Se utiliza para mostrar un error 404 cuando la ruta no coincide con ninguna de las anteriores
 
-
-
 ## Screenshots
 
 ### Pagina Principal ###
@@ -41,6 +39,9 @@ $ npm run dev
 ![App Screenshot](https://res.cloudinary.com/geronicola/image/upload/v1681095330/coderhouse/euzotumyvu2xxteike61.jpg)
 
 
-## Authors
+## Access
+user: admin@admin.com 
+password: 123
 
+## Authors
 ~ Geronimo Nicola 
