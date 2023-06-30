@@ -1,4 +1,4 @@
-import { collection, getFirestore, addDoc } from "firebase/firestore"
+import { collection, getFirestore, addDoc, doc, updateDoc } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
 import { NavLink, useLocation, useParams } from "react-router-dom"
 import { Context } from "../../context/context"
@@ -12,6 +12,7 @@ const ProductForm = ({productSelected}) => {
 
     useEffect(() => {
         if(id) getProduct(id)
+        
       }, [])
 
 
@@ -38,6 +39,7 @@ const ProductForm = ({productSelected}) => {
         })
     }
     const options = ["Celulares", "Notebooks", "PC", "Tablets"]
+    console.log(product.categoria)
 
     return (
         <> 

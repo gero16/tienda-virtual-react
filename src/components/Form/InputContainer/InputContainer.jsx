@@ -2,8 +2,8 @@ import { useContext, useState } from "react"
 import { Context } from "../../../context/context"
 
 const InputContainer = ({type, name, value, options }) => {
-    const { product, setProduct, getProduct } = useContext(Context)
-    console.log(product)
+    const { product, setProduct } = useContext(Context)
+
     return (
         <> 
         {type === "select" 

@@ -21,13 +21,13 @@ import ProductFormContainer from './components/FormContainer/ProductFormContaine
 
 // Pasar a .env
 const firebaseConfig = {
-  apiKey: "AIzaSyBr5dN3KNlQONtu_BDA_QFQwcmFQBMjNj0",
-  authDomain: "react-coderhouse-f0283.firebaseapp.com",
-  projectId: "react-coderhouse-f0283",
-  storageBucket: "react-coderhouse-f0283.appspot.com",
-  messagingSenderId: "89725916726",
-  appId: "1:89725916726:web:be94c7b3b86e387bfb2a97",
-  measurementId: "G-C6YPNCP124"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
 initializeApp(firebaseConfig);
