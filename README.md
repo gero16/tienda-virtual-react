@@ -38,7 +38,7 @@ $ npm run dev
 ### Categoria - notebooks ###
 ![App Screenshot](https://res.cloudinary.com/geronicola/image/upload/v1681095330/coderhouse/euzotumyvu2xxteike61.jpg)
 
-### Menu del Administrador - notebooks ###
+### Menu del Administrador ###
 ![App Screenshot](https://res.cloudinary.com/geronicola/image/upload/v1688143766/coderhouse/t1nojvcgfdodg6pbfewb.jpg)
 
 ## Access
