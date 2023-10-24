@@ -3,8 +3,8 @@ import { useState } from "react"
 const Filter = ({valueFilter, prices}) => {
     
     return(
-        <div>
-            <h4> Filtrar por el Precio </h4>
+        <>
+            <h4 className="p-3"> Filtrar por Precio </h4>
             <div className="text-center">
                 <input 
                     type="range" 
@@ -18,7 +18,7 @@ const Filter = ({valueFilter, prices}) => {
                 />
                 <span> USD { prices }</span>
             </div>
-        </div>
+        </>
     
     )
 }

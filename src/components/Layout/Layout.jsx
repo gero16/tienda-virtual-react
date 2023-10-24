@@ -3,10 +3,12 @@ import NavBar from "../NavBar/NavBar"
 
 const Layout = () => {
     return (
+        <>
+        <NavBar> </NavBar>
         <main className="container">
-            <NavBar> </NavBar>
             <Page> </Page>
         </main>
+        </>
     )
 }
 

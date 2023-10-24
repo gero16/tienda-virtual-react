@@ -36,8 +36,8 @@ const ItemList = ({ products, setProducts }) => {
                 !products.length > 0
                     ? <div className="text-center m-5 flex"> <Loader /> </div>
                     : <div className="row">
-
-                        <div className="col-3 col-md-2 text-center mt-3">
+                        
+                        <div className="col-3 col-md-2 text-center mt-4">
                             <Filter prices={ prices } valueFilter={ valueFilter } />
                             <CategoriesFilter products={ products }> </CategoriesFilter>
                         </div>

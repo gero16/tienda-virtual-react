@@ -9,11 +9,9 @@ const Auth = ()=> {
 
   return (
     <div className="App">
-      <div className='container'>  
-          {
-            location.pathname === "/sign-up" ? <SignUp /> : <Login/> 
-          }
-      </div>
+      {
+        location.pathname === "/sign-up" ? <SignUp /> : <Login/> 
+      }
 
     </div>
   )

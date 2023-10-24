@@ -6,11 +6,7 @@ const App = ()=> {
 
   return (
     <div className="App">
-
-      <div className='container'>
         <ItemListContainer greeting={""}  />
-      </div>
-      
     </div>
   )
 }

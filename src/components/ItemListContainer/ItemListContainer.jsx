@@ -40,9 +40,11 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
         <>
-            <Cart products={products}> </Cart>
-            <h1 className="titulo"> { greeting } </h1>
-            <ItemList products={ products } setProducts={setProducts} />
+            <div className="container">
+                <Cart products={products}> </Cart>
+                <h1 className="titulo"> { greeting } </h1>
+                <ItemList products={ products } setProducts={setProducts} />
+            </div>
 
         </> 
  
