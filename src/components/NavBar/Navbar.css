@@ -1,0 +1,14 @@
+.logo {
+    width: 90px;
+  }
+  
+  .carrito-logo{
+    cursor:pointer;
+    transition: all 0.8s ease-out;
+  }
+  
+  .carrito-logo:hover {
+    transform: scale(1.2);
+    transition: all 0.8s ease-out;
+    filter: brightness(0.9);
+  }

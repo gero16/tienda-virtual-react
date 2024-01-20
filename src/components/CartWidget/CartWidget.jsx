@@ -12,7 +12,9 @@ const CartWidget = ({ handleClose, show, handleShow }) => {
         <>
             <div className="d-flex" onClick={ handleShow }>
                 <img src={ carrito } alt="Imagen del Carrito de Compras" className='carrito-logo '></img>
-                <span className="contador-productos"> { productsAdded.length } </span>
+                <div>
+                    <span className="contador-productos"> { productsAdded.length } </span>
+                </div>
             </div>
 
             <Cart handleClose={ handleClose } show={ show } productsAdded={productsAdded}  /> 

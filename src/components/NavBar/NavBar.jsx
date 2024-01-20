@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png"
 import { NavLink } from "react-router-dom"
 import { useState } from "react";
 import { Context } from "../../context/context";
+import "./Navbar.css"
 
 
 const NavBar = () => {
